@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <input type="button" value="click" id="btn">
+    <div class="box">
+        <div class="wrap">
+            <span id="clo">X</span>
+            <p>元旦快乐</p>
+        </div>
+    </div>
+    <script>
+        function popout() {
+            this.btn = document.getElementById('btn');
+            this.box = document.getElementsByClassName('box')[0];
+            this.clo = document.getElementById('clo');
+            this.clic();
+        }
+        popout.prototype = {
+            constructor: popout,
+            clic: function() {
+                var that = this;
+                this.btn.onclick = function() {
+                    that.box.style.display = 'block';
+                    that.close();
+                }
+            },
+            close: function() {
+                var that = this;
+                this.clo.onclick = function() {
+                    that.box.style.display = 'none';
+                }
+            }
+        }
+        new popout();
+    </script>
+</body>
+
+</html>
